@@ -1,0 +1,22 @@
+.order-product{
+    width: 100%;
+    float: left;
+    margin-bottom: 20px;
+}
+
+.order-product img {
+    width: 70px;
+    height: 70px;
+    float: left;
+    margin-right: 20px;
+}
+
+.order-product h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.order-product p {
+    color: #797979;
+    font-weight: 600;
+}

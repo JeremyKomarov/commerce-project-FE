@@ -1,0 +1,110 @@
+.sign-up-container {
+    margin: 0 auto;
+    width: 600px;
+    background: #fafafa;
+    box-shadow: 4px 5px 5px -7px rgba(0,0,0,1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sign-up-title{
+    align-self: center;
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+.sign-up-form {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 1rem;
+    text-align: center;
+    justify-content: space-evenly;
+}
+
+.sign-up-nonprivate,
+.sign-up-private {
+    display: flex;
+    flex-direction: column;
+}
+
+a, a:visited {
+    color: #fff;
+}
+
+.sign-up-container input[type="text"],
+.sign-up-container input[type="password"],
+.sign-up-container input[type="email"]{
+    width: 200px;
+    font-size: 22px;
+    padding: 4px;
+    border-radius:6px;
+}
+
+.sign-up-container textarea {
+    font-size: 22px;
+    padding: 4px;
+    border-radius:6px;
+}
+
+
+label{
+    font-size: 20px;
+    margin-top: 1rem;
+}
+
+.sign-up-btn {
+    background-color: white;
+    padding: 6px;
+    cursor:pointer;
+    width: 100%;
+    font-size: 22px;
+    border-radius:6px;
+    margin-top: 1rem;
+}
+
+.instructions {
+    font-size: 0.75rem;
+    border-radius: 0.5rem;
+    background: #000;
+    color: #fff;
+    padding: 0.25rem;
+    position: relative;
+    bottom: -10px;
+    max-width: 200px;
+}
+
+.instructions > svg {
+    margin-right: 0.25rem;
+}
+
+.offscreen {
+    position: absolute;
+    left: -9999px;
+}
+
+.hide {
+    display: none;
+}
+
+.valid {
+    color: limegreen;
+    margin-left: 0.25rem;
+}
+
+.invalid {
+    color: red;
+    margin-left: 0.25rem;
+}
+
+.errmsg {
+    background-color: lightpink;
+    color: firebrick;
+    font-weight: bold;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.line {
+    display: inline-block;
+}

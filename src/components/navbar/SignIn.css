@@ -1,0 +1,45 @@
+.sign-in-container{
+    position: absolute;
+    right: 0;
+    width: 400px;
+    background: #fafafa;
+    box-shadow: 4px 5px 5px -7px rgba(0,0,0,1);
+    z-index: 1000;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sign-in-container h1 {
+    align-self: center;
+}
+
+.sign-in-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.sign-in-form label {
+    margin-bottom: 1px;
+    font-size: 20px;
+}
+
+.sign-in-form input[type="text"],
+.sign-in-form input[type="password"],
+.sign-in-form textarea  {
+    height: 35px;
+    font-size: 22px;
+    padding: 4px;
+    border-radius:6px;
+    margin-bottom: 10px;
+}
+
+.sign-in-btn {
+    background-color: white;
+    padding: 6px;
+    cursor:pointer;
+    width: 100%;
+    font-size: 22px;
+    border-radius:6px;
+}
+

@@ -1,0 +1,27 @@
+.shop-cart-container{
+    position: absolute;
+    right: 0;
+    width: 450px;
+    background: #fafafa;
+    box-shadow: 4px 5px 5px -7px rgba(0,0,0,1);
+    z-index: 1000;
+    padding: 20px;
+    padding-bottom: 0;
+}
+
+.shop-cart-empty h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.cart-check-out-btn {
+    color: #fafafa;
+    font-size: 15px;
+    border: none;
+    height: 50px;
+    width: 300px ;
+    background: green;
+    cursor: pointer;
+    display: block;
+    margin: 5px auto;
+}

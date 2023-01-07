@@ -1,12 +1,16 @@
 import React from 'react'
 import "../product/OrderProduct.css"
+import { FaRegMinusSquare } from "react-icons/fa";
 
 function OrderProduct(props) {
+  const { name, price, img, } = props.product
+
   return (
     <div className='order-product'>
-        <img src={props.product.img} alt={props.product.name} />
-        <h2>{props.product.name}</h2>
-        <p>{props.product.price}$</p>
+        <img src={img} alt={name} />
+        <h2 className='order-product-name'>{name}</h2>
+        <p className='order-product-price'>{price}$</p>
+        <FaRegMinusSquare className='order-product-delete-icon' />
     </div>
   )
 }

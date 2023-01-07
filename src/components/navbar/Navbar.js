@@ -5,16 +5,16 @@ import Cart from './Cart'
 import { Link,useMatch, useResolvedPath } from "react-router-dom";
 import SignIn from './SignIn';
 
-
 function Navbar(props) {
-    const [cartOpen, setCartOpen] = useState(false)
-    const [signInOpen, setSignInOpen] = useState(false)
-    const [clicked, setClicked] = useState(false)
-  
+  const {cartProducts} = props
 
-    const handleClick = () => {
-      setClicked(!clicked)
-    }
+  const [cartOpen, setCartOpen] = useState(false)
+  const [signInOpen, setSignInOpen] = useState(false)
+  const [clicked, setClicked] = useState(false)
+  
+  const handleClick = () => {
+    setClicked(!clicked)
+  }
 
   return (
     <nav className='nav-container'>
@@ -38,7 +38,7 @@ function Navbar(props) {
         </ul>
         <div className="nav-mobile" onClick={handleClick}>{clicked ? <FaTimes/> : <FaBars/>}</div>
         {signInOpen && <SignIn />}
-        {cartOpen && <Cart orders={props.orders} />}
+        {cartOpen && <Cart cartProducts={cartProducts} />}
      </nav>
   )
 }

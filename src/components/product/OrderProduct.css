@@ -1,22 +1,25 @@
 .order-product{
-    width: 100%;
-    float: left;
-    margin-bottom: 20px;
+    width: 400px;
+    height: 70px;
+    background: #eeeeee;
+    margin-bottom: 10px;
+
 }
 
 .order-product img {
+    float: left;
     width: 70px;
     height: 70px;
-    float: left;
-    margin-right: 20px;
+    margin-right: 5px;
 }
 
-.order-product h2 {
+.order-product-name {
     font-size: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
-.order-product p {
+.order-product-price {
     color: #797979;
     font-weight: 600;
+    margin-bottom: 5px;
 }

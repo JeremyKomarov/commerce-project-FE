@@ -4,7 +4,6 @@ import AuthContext from "../context/AuthProvider";
 import { Link } from "react-router-dom";
 import "./SignIn.css"
 
-
 function SignIn() {
   const { setAuth } = useContext(AuthContext);
 

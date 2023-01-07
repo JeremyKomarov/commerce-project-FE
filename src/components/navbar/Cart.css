@@ -7,21 +7,35 @@
     z-index: 1000;
     padding: 20px;
     padding-bottom: 0;
+    display: flex;
 }
 
-.shop-cart-empty h2 {
-    font-size: 20px;
-    margin-bottom: 20px;
+.cart-products-total-price{
+    margin-bottom: 10px;
 }
+
+.shop-cart-empty h2,
+.cart-products-total-price,
+.cart-products-items
+ {
+    font-size: 20px;
+}
+
+.cart-total-price,
+.cart-total-products {
+    font-weight: 600;
+}
+
 
 .cart-check-out-btn {
     color: #fafafa;
-    font-size: 15px;
+    font-size: 20px;
+    font-weight: 600;
     border: none;
     height: 50px;
     width: 300px ;
     background: green;
     cursor: pointer;
     display: block;
-    margin: 5px auto;
+    margin: 10px auto 10px auto;
 }

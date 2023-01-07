@@ -6,6 +6,8 @@ const AUTHENTICATE = () => `/authenticate`
 
 const REGISTER_CUSTOMER = () => `/customer/create`
 
+const ADD_ORDER_PRODUCT = () => '/orderProduct/create'
+
 export const getAllProducts = () => {
   return axios.get(ALL_PRODUCTS());
 }
@@ -18,5 +20,6 @@ export const register = (params) => {
   return axios.post(REGISTER_CUSTOMER(), params)
 }
 
-
-asdsad
+export const addProductToCart = (params) => {
+  return axios.post(ADD_ORDER_PRODUCT(), params)
+}

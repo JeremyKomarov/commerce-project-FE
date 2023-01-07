@@ -6,7 +6,7 @@ function Header(props) {
 
   return (
     <header>
-      <Navbar orders={props.orders} />
+      <Navbar cartProducts={props.cartProducts} />
       <div className='header-main-banner'></div>
     </header>
   )

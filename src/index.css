@@ -4,11 +4,11 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     font-family: 'Montserrat', 'sans-serif';
 }
 
 body {
+    box-sizing: border-box;
     background: #E3E6E6;
     color: #222;
     font-weight: 300;

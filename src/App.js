@@ -3,7 +3,7 @@ import Footer from './components/Footer';
 import Home from './components/navbar/Home';
 import {  useState } from 'react'
 import { addProductToCart } from './services/api'
-import Signup from './components/navbar/Signup'
+import Signup from './components/navbar/userLoginReg/Signup'
 import { Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./components/context/AuthProvider";
 import "./App.css"

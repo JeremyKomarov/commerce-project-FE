@@ -3,7 +3,7 @@ import "./Navbar.css"
 import { FaShoppingBag, FaTimes, FaBars } from "react-icons/fa";
 import Cart from './Cart'
 import { Link,useMatch, useResolvedPath } from "react-router-dom";
-import SignIn from './SignIn';
+import SignIn from './userLoginReg/SignIn';
 
 function Navbar(props) {
   const {cartProducts} = props
@@ -35,8 +35,8 @@ function Navbar(props) {
               <FaShoppingBag className={`shop-cart-btn ${cartOpen && 'active'}`} onClick={() => setCartOpen(!cartOpen)} />
             </div>
           </div>
-        </ul>
         <div className="nav-mobile" onClick={handleClick}>{clicked ? <FaTimes/> : <FaBars/>}</div>
+        </ul>
         {signInOpen && <SignIn />}
         {cartOpen && <Cart cartProducts={cartProducts} />}
      </nav>

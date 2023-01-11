@@ -1,6 +1,6 @@
 import React, { useState, useContext, useRef, useEffect } from 'react'
-import { authenticate } from "../../services/api"
-import AuthContext from "../context/AuthProvider";
+import { authenticate } from "../../../services/api"
+import AuthContext from "../../context/AuthProvider";
 import { Link } from "react-router-dom";
 import "./SignIn.css"
 

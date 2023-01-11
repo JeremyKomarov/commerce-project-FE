@@ -1,6 +1,5 @@
 .nav-container{
-  max-height: 60px;
-  width: 100%;
+  max-height: 44px;
   background-color: #2a3239;
   margin: 0 auto;
 }
@@ -61,7 +60,35 @@ li.active {
 }
 
 @media screen and (max-width: 866px) {
-    .nav-container {
+    .nav-mobile {
+      display: block;
+      margin: 0.7rem 2rem 0 0;
+    }
+
+    .nav-routes {
+      margin: 0;
+      right: -300px;
+      flex-direction: column;
+      z-index: 999;
+      align-items: center;
+      background-color: #2a3239;
+      position: fixed;
+      top: 2.7rem;
+      font-size: 1.2rem;
+      transition: 0.2s ease-in-out;
+      padding: 0 0.3rem 0.3rem 0.2rem;
+    }
+
+    .nav-routes.active {
+      right: 0;
+    }
+
+  
+
+
+
+
+    /* .nav-container {
       max-height: 60px;
       width: 100%;
       margin: 0 auto;
@@ -99,5 +126,5 @@ li.active {
     li.active {
       background: brown;
       width: 100px;
-    }
+    } */
   }

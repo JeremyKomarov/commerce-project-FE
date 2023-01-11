@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useState } from "react";
 import { getAllProducts } from '../../services/api'
 
-const ProductsContext = createContext({});
+export const ProductsContext = createContext({});
 
 export const ProductsProvider = ({ children }) => {
     const [products, setProducts] = useState([]);
@@ -11,7 +11,7 @@ export const ProductsProvider = ({ children }) => {
         .then(res => {
             setProducts(res.data)
         })
-    })
+    },[])
 
     return (
         <ProductsContext.Provider value={{ products, setProducts }}>
@@ -21,4 +21,6 @@ export const ProductsProvider = ({ children }) => {
 }
 
 export default ProductsContext;
+
+
 

@@ -1,6 +1,6 @@
 import React, { useState , useEffect, useRef } from 'react'
 import "./Signup.css"
-import { register } from "../../services/api"
+import { register } from "../../../services/api"
 import { FaCheck, FaTimes, FaBFaInfoCirclears } from "react-icons/fa";
 
 

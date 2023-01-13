@@ -10,7 +10,9 @@ const REGISTER_CUSTOMER = () => `/customer/create`
 
 const ADD_ORDER_PRODUCT = () => '/orderProduct/create'
 
-const GET_CUSTOMER = () => '/customer/username/'
+const GET_FULL_CUSTOMER_PROFILE = (username) => `/customer/profile/${username}`
+
+
 
 export const getAllProducts = () => {
   return axios.get(ALL_PRODUCTS());
@@ -28,9 +30,16 @@ export const register = (params) => {
   return axios.post(REGISTER_CUSTOMER(), params)
 }
 
-export const addProductToCart = (params) => {
-  return axios.post(ADD_ORDER_PRODUCT(), params)
+export const addProductToCart = (bodyParam, jwt) => {
+  return axios.post(ADD_ORDER_PRODUCT(), bodyParam , {params: {
+    "Authorization": `Bearer ${jwt}`
+  }})
 }
-export const getCustomerByUsername = (username, params ) => {
-  return axios.get(GET_CUSTOMER()+username,{params})
+export const getFullCustomerProfile = (username, jwt) => {
+  return axios.get(GET_FULL_CUSTOMER_PROFILE(username), {
+    params: {
+      "Authorization": `Bearer ${jwt}`
+    }
+  });
 }
+

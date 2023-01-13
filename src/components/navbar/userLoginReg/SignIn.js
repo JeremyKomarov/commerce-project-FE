@@ -1,11 +1,14 @@
 import React, { useState, useContext, useRef, useEffect } from 'react'
-import { authenticate } from "../../../services/api"
+import { authenticate, getFullCustomerProfile } from "../../../services/api"
 import AuthContext from "../../context/AuthProvider";
+import CustomerContext from "../../context/CustomerProvider";
 import { Link } from "react-router-dom";
 import "./SignIn.css"
 
+
 function SignIn() {
   const { setAuth } = useContext(AuthContext);
+  const { setCustomer } = useContext(CustomerContext);
 
   const userRef = useRef();
   const errRef = useRef();
@@ -24,17 +27,16 @@ useEffect(() => {
     setErrMsg("");
 }, [username, password]);
 
+
 const handleSubmit = async (e) => {
   e.preventDefault();
   try {
-      const params = {
-          username,
-          password,
-      };
-      const response = await authenticate(params);
+      const jwtRes = await authenticate({ username, password} )
+      const profileAndProductsRes = await getFullCustomerProfile(username, jwtRes.data.jwt)      
+      
       setSuccess(true);
-      setAuth(response.data.jwt)
-
+      setAuth(jwtRes.data.jwt)
+      setCustomer(profileAndProductsRes.data)
       setUsername("");
       setPassword("");
   } catch (err) {

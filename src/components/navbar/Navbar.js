@@ -5,8 +5,7 @@ import Cart from './Cart'
 import { Link,useMatch, useResolvedPath } from "react-router-dom";
 import SignIn from './userLoginReg/SignIn';
 
-function Navbar(props) {
-  const {cartProducts} = props
+function Navbar() {
 
   const [cartOpen, setCartOpen] = useState(false)
   const [signInOpen, setSignInOpen] = useState(false)
@@ -38,7 +37,7 @@ function Navbar(props) {
         <div className="nav-mobile" onClick={handleClick}>{clicked ? <FaTimes/> : <FaBars/>}</div>
         </ul>
         {signInOpen && <SignIn />}
-        {cartOpen && <Cart cartProducts={cartProducts} />}
+        {cartOpen && <Cart />}
      </nav>
   )
 }

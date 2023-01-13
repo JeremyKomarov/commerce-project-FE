@@ -1,23 +1,61 @@
 import React, {useState, useContext} from 'react'
-import Product from '../product/Product'
-import FullProduct from '../product/FullProduct';
 import "./Home.css"
 import ProductsContext  from "../context/ProductsProvider";
+import CustomerContext  from "../context/CustomerProvider";
+import Product from '../product/Product'
+import FullProduct from '../product/FullProduct';
+import FavoriteProduct from '../product/FavoriteProduct'
+import { addProductToCart } from '../../services/api'
+import AuthContext from "../context/AuthProvider";
+import CartContext from "../context/CartProvider";
+
+
 
 function Home(props) {
-  const { handleAddProducToCart } = props
   const { products } = useContext(ProductsContext)
-
+  const { customer } = useContext(CustomerContext)
+  const { cart, setCart } = useContext(CartContext)
   const [showFullProduct, setShowFullProduct] = useState(false);
   const [fullProduct, setFullProduct] = useState();
+  const { auth } = useContext(AuthContext)
   
   const onShowFullProduct = (product) => {
     setFullProduct(product);
     setShowFullProduct(!showFullProduct);
   }
 
+  const handleAddProducToCart = async (product) => {
+    let isInArray = false;
+    cart.forEach(prd => {
+      if(prd.id === product.id)
+        isInArray = true
+    })
+    if (!isInArray)
+    {
+      const bodyParams = {
+        orderId: null,
+        productId: product.id,
+        quantity: 1,
+        price: product.price
+      };
+      const res = await addProductToCart(bodyParams, auth)
+      setCart([...cart, product]);
+    }
+}
+
+
   return (
     <div className='home-container'>
+       {customer ? 
+        <div className='favorite-products-container'>
+          {customer.favoriteProducts.map(fPrd => (
+            <FavoriteProduct key={fPrd.id} favoriteProducts={fPrd} handleAddProducToCart={handleAddProducToCart} /> 
+          ))}
+          
+        </div>
+        : 
+        <div className='favorite-products-container-empty'>Log in</div>}
+
       <div className='products-container'>
           {products.map(prd => (
             <Product key={prd.id} product={prd} onShowFullProduct={onShowFullProduct} handleAddProducToCart={handleAddProducToCart}  />

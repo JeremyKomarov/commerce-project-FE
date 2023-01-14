@@ -33,6 +33,8 @@ const handleSubmit = async (e) => {
   try {
       const jwtRes = await authenticate({ username, password} )
       const profileAndProductsRes = await getFullCustomerProfile(username, jwtRes.data.jwt)      
+
+      console.log(profileAndProductsRes);
       
       setSuccess(true);
       setAuth(jwtRes.data.jwt)

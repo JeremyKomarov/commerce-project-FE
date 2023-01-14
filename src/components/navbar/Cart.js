@@ -2,19 +2,22 @@ import React, {useContext} from 'react'
 import "./Cart.css"
 import OrderProduct from '../product/OrderProduct';
 import CartContext from "../context/CartProvider";
+import { Link } from 'react-router-dom';
+import Checkout from './Checkout';
+import countTotalPrice from '../../utils/totalPriceCounter';
 
 
 function Cart(props) {
   const { cart } = useContext(CartContext)
 
   
-  const countTotalPrice = (cartProducts)  => {
-      let totalPrice = 0
-      cartProducts.forEach(product => {
-        totalPrice += product.price;
-      })
-      return totalPrice
-  }
+  // const countTotalPrice = (cartProducts)  => {
+  //     let totalPrice = 0
+  //     cartProducts.forEach(product => {
+  //       totalPrice += product.price;
+  //     })
+  //     return totalPrice
+  // }
 
   // const handleRemoveProducToCart = async (product) => {
     
@@ -36,7 +39,7 @@ function Cart(props) {
             <p className='cart-total-products'>{cart.length}</p>
           </div>
 
-      <button className='cart-check-out-btn'>CheckOut Now</button>
+      <button className='cart-check-out-btn'><Link to={"/checkout"}>Checkot Now </Link></button>
     </div>)
   }
 

@@ -12,6 +12,8 @@ const ADD_ORDER_PRODUCT = () => '/orderProduct/create'
 
 const GET_FULL_CUSTOMER_PROFILE = (username) => `/customer/profile/${username}`
 
+const CHECKOUT_ORDER = () => `/order/create`
+
 
 
 export const getAllProducts = () => {
@@ -35,11 +37,18 @@ export const addProductToCart = (bodyParam, jwt) => {
     "Authorization": `Bearer ${jwt}`
   }})
 }
+
 export const getFullCustomerProfile = (username, jwt) => {
   return axios.get(GET_FULL_CUSTOMER_PROFILE(username), {
     params: {
       "Authorization": `Bearer ${jwt}`
     }
   });
+}
+
+export const checkOutOrder = (bodyParam, jwt) => {
+  return axios.post(CHECKOUT_ORDER(), bodyParam , {params: {
+    "Authorization": `Bearer ${jwt}`
+  }})
 }
 

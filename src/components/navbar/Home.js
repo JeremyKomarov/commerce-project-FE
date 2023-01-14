@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import "./Home.css"
 import ProductsContext  from "../context/ProductsProvider";
 import CustomerContext  from "../context/CustomerProvider";
@@ -8,8 +8,6 @@ import FavoriteProduct from '../product/FavoriteProduct'
 import { addProductToCart } from '../../services/api'
 import AuthContext from "../context/AuthProvider";
 import CartContext from "../context/CartProvider";
-
-
 
 function Home(props) {
   const { products } = useContext(ProductsContext)
@@ -24,6 +22,7 @@ function Home(props) {
     setShowFullProduct(!showFullProduct);
   }
 
+
   const handleAddProducToCart = async (product) => {
     let isInArray = false;
     cart.forEach(prd => {
@@ -34,6 +33,7 @@ function Home(props) {
     {
       const bodyParams = {
         orderId: null,
+        customerId: customer.customer.id,
         productId: product.id,
         quantity: 1,
         price: product.price
@@ -42,6 +42,10 @@ function Home(props) {
       setCart([...cart, product]);
     }
 }
+
+useEffect(() => {
+
+}, [cart]);
 
 
   return (

@@ -6,6 +6,7 @@ import { addProductToCart } from './services/api'
 import Signup from './components/navbar/userLoginReg/Signup'
 import { Route, Routes } from "react-router-dom";
 import AuthContext, { AuthProvider } from "./components/context/AuthProvider";
+import Checkout from './components/navbar/Checkout';
 
 function App() {
   // const [cartProducts, setCartProducts] = useState([]);
@@ -37,6 +38,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
         <Footer/>
       </div>

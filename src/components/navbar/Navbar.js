@@ -12,7 +12,7 @@ function Navbar() {
   const [activeIndex, setActiveIndex] = useState(null);
   const [cartOpen, setCartOpen] = useState(false)
   const [signInOpen, setSignInOpen] = useState(false)
-  const [mobileNavOpen, setMobileNavOpen] = useState(false)
+  const [mobileNavOpen, setMobileNavOpen] = useState(true)
   
   const handleMobileNav = () => {
     setMobileNavOpen(!mobileNavOpen)
@@ -90,7 +90,7 @@ function Navbar() {
             </li>
           </div>
 
-        <div className="nav-mobile" onClick={handleMobileNav}>{mobileNavOpen ? <FaTimes/> : <FaBars/>}</div>
+        <div className="nav-mobile" onClick={handleMobileNav}>{!mobileNavOpen ? <FaTimes/> : <FaBars/>}</div>
       </ul>
         {signInOpen && <SignIn />}
         {cartOpen && <Cart />}

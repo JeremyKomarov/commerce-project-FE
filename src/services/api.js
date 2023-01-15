@@ -33,7 +33,8 @@ export const register = (params) => {
 }
 
 export const addProductToCart = (bodyParam, jwt) => {
-  return axios.post(ADD_ORDER_PRODUCT(), bodyParam , {params: {
+  return axios.post(ADD_ORDER_PRODUCT(), bodyParam , 
+  {params: {
     "Authorization": `Bearer ${jwt}`
   }})
 }

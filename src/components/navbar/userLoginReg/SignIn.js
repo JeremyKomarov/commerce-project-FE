@@ -2,6 +2,7 @@ import React, { useState, useContext, useRef, useEffect } from 'react'
 import { authenticate, getFullCustomerProfile } from "../../../services/api"
 import AuthContext from "../../context/AuthProvider";
 import CustomerContext from "../../context/CustomerProvider";
+import CartContext from "../../context/CartProvider";
 import { Link } from "react-router-dom";
 import "./SignIn.css"
 
@@ -9,6 +10,7 @@ import "./SignIn.css"
 function SignIn() {
   const { setAuth } = useContext(AuthContext);
   const { setCustomer } = useContext(CustomerContext);
+  const { setCart } = useContext(CartContext);
 
   const userRef = useRef();
   const errRef = useRef();
@@ -34,11 +36,11 @@ const handleSubmit = async (e) => {
       const jwtRes = await authenticate({ username, password} )
       const profileAndProductsRes = await getFullCustomerProfile(username, jwtRes.data.jwt)      
 
-      console.log(profileAndProductsRes);
       
       setSuccess(true);
       setAuth(jwtRes.data.jwt)
       setCustomer(profileAndProductsRes.data)
+      setCart(profileAndProductsRes.data.cartProducts)
       setUsername("");
       setPassword("");
   } catch (err) {

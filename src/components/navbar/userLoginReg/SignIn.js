@@ -91,13 +91,6 @@ const handleSubmit = async (e) => {
                             Sign In
                         </button>
                     </form>
-                    <p>
-                        Need an Account?
-                        <br />
-                        <span className="line">
-                            <Link to="/signUp">Sign Up</Link>
-                        </span>
-                    </p>
                 </div>
             )}
             </>

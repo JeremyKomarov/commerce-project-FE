@@ -61,7 +61,6 @@ function Navbar() {
     }
 }, [customer])
 
-
   return (
     <nav className='nav-container'>
 

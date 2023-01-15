@@ -29,6 +29,7 @@ function Navbar() {
     setCartOpen(false)
     setSignInOpen(false)
     setCustomer(``)
+    window.location.reload()
   }
 
   const handleSignUp = (index) => {

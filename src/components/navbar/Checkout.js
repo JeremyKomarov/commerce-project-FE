@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import "./Checkout.css"
 import CartContext from "../context/CartProvider"
 import CustomerContext from "../context/CustomerProvider"
@@ -11,7 +11,7 @@ import OrderProduct from "../product/OrderProduct"
 
 
 function Checkout(props) {
-    const {cart} = useContext(CartContext)
+    const {cart, setCart} = useContext(CartContext)
     const {customer} = useContext(CustomerContext)
     const {auth} = useContext(AuthContext)
     const [address , setAddress] = useState(``)
@@ -31,10 +31,9 @@ function Checkout(props) {
             console.log(newOrderBody);
 
             const res = await checkOutOrder(newOrderBody, auth)
+            setCart([])
       
     }
-
-    console.log(cart);
 
 
 

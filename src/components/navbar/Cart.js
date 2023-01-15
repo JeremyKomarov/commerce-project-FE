@@ -1,8 +1,8 @@
 import React, {useContext} from 'react'
+import { Link } from 'react-router-dom';
 import "./Cart.css"
 import OrderProduct from '../product/OrderProduct';
 import CartContext from "../context/CartProvider";
-import { Link } from 'react-router-dom';
 import Checkout from './Checkout';
 import countTotalPrice from '../../utils/totalPriceCounter';
 

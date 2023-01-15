@@ -1,11 +1,11 @@
+import { useContext, useState } from 'react'
+import { Route, Routes } from "react-router-dom";
+import AuthContext, { AuthProvider } from "./components/context/AuthProvider";
+import { addProductToCart } from './services/api'
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './components/navbar/Home';
-import {  useContext, useState } from 'react'
-import { addProductToCart } from './services/api'
 import Signup from './components/navbar/userLoginReg/Signup'
-import { Route, Routes } from "react-router-dom";
-import AuthContext, { AuthProvider } from "./components/context/AuthProvider";
 import Checkout from './components/navbar/Checkout';
 
 function App() {

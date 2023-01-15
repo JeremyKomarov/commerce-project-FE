@@ -1,10 +1,10 @@
 import React, { useContext, useState, useEffect } from 'react'
+import { Link,} from "react-router-dom";
 import "./Navbar.css"
 import { FaShoppingBag, FaTimes, FaBars } from "react-icons/fa";
-import Cart from './Cart'
-import { Link,useMatch, useResolvedPath } from "react-router-dom";
-import SignIn from './userLoginReg/SignIn';
 import CustomerContext from '../context/CustomerProvider';
+import Cart from './Cart'
+import SignIn from './userLoginReg/SignIn';
 
 function Navbar() {
   const { customer, setCustomer } = useContext(CustomerContext)
@@ -96,18 +96,5 @@ function Navbar() {
      </nav>
   )
 }
-
-function CustomLink({ to, children, ...props }) {
-    const resolvedPath = useResolvedPath(to)
-    const isActive = useMatch({ path: resolvedPath.pathname, end: true })
-  
-    return (
-        <li className={isActive ? "active" : ""}>
-            <Link to={to} {...props}>
-                {children}
-            </Link>
-        </li>
-    )
-  }
 
 export default Navbar

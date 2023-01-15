@@ -1,11 +1,11 @@
 import React, { useState, useRef, useContext } from 'react'
+import "./Checkout.css"
 import CartContext from "../context/CartProvider"
 import CustomerContext from "../context/CustomerProvider"
 import AuthContext from '../context/AuthProvider' 
-import OrderProduct from "../product/OrderProduct"
 import { checkOutOrder } from "../../services/api"
-import "./Checkout.css"
 import countTotalPrice from '../../utils/totalPriceCounter';
+import OrderProduct from "../product/OrderProduct"
 
 
 

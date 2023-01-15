@@ -1,10 +1,9 @@
 import React, { useState, useContext, useRef, useEffect } from 'react'
-import { authenticate, getFullCustomerProfile } from "../../../services/api"
+import "./SignIn.css"
 import AuthContext from "../../context/AuthProvider";
 import CustomerContext from "../../context/CustomerProvider";
 import CartContext from "../../context/CartProvider";
-import { Link } from "react-router-dom";
-import "./SignIn.css"
+import { authenticate, getFullCustomerProfile } from "../../../services/api"
 
 
 function SignIn() {

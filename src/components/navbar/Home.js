@@ -2,12 +2,12 @@ import React, {useState, useContext, useEffect} from 'react'
 import "./Home.css"
 import ProductsContext  from "../context/ProductsProvider";
 import CustomerContext  from "../context/CustomerProvider";
+import AuthContext from "../context/AuthProvider";
+import CartContext from "../context/CartProvider";
+import { addProductToCart } from '../../services/api'
 import Product from '../product/Product'
 import FullProduct from '../product/FullProduct';
 import FavoriteProduct from '../product/FavoriteProduct'
-import { addProductToCart } from '../../services/api'
-import AuthContext from "../context/AuthProvider";
-import CartContext from "../context/CartProvider";
 
 function Home(props) {
   const { products } = useContext(ProductsContext)

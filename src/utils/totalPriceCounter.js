@@ -1,4 +1,4 @@
-const countTotalPrice = (cartProducts)  => {
+const totalPriceCounter = (cartProducts)  => {
     let totalPrice = 0
     cartProducts.forEach(product => {
       totalPrice += product.price;
@@ -6,4 +6,4 @@ const countTotalPrice = (cartProducts)  => {
     return totalPrice
 }
 
-export default countTotalPrice
+export default totalPriceCounter

@@ -12,7 +12,6 @@ import FavoriteProduct from '../product/FavoriteProduct'
 function Home(props) {
   const { products } = useContext(ProductsContext)
   const { customer } = useContext(CustomerContext)
-  const { cart, setCart } = useContext(CartContext)
   const [showFullProduct, setShowFullProduct] = useState(false);
   const [fullProduct, setFullProduct] = useState();
   const { auth } = useContext(AuthContext)
@@ -23,28 +22,7 @@ function Home(props) {
     setShowFullProduct(!showFullProduct);
   }
 
-//   const handleAddProducToCart = async (product) => {
-//     let isInArray = false;
-//     cart.forEach(prd => {
-//       if(prd.id === product.id)
-//         isInArray = true
-//     })
-//     if (!isInArray)
-//     {
-//       const bodyParams = {
-//         orderId: null,
-//         customerId: customer.customer.id,
-//         productId: product.id,
-//         quantity: 1,
-//         price: product.price
-//       };
-//       const res = await addProductToCart(bodyParams, auth)
-//       setCart([...cart, product]);
-//     }
-// }
 
-useEffect(() => {
-}, [cart]);
 
   return (
     <div className='home-container'>

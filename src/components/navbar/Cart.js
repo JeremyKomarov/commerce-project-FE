@@ -3,31 +3,22 @@ import { Link } from 'react-router-dom';
 import "./Cart.css"
 import OrderProduct from '../product/OrderProduct';
 import CartContext from "../context/CartProvider";
-import Checkout from './Checkout';
 import countTotalPrice from '../../utils/totalPriceCounter';
 
 
 function Cart(props) {
-  const { cart } = useContext(CartContext)
+  const { cart , setCart} = useContext(CartContext)
 
-  
-  // const countTotalPrice = (cartProducts)  => {
-  //     let totalPrice = 0
-  //     cartProducts.forEach(product => {
-  //       totalPrice += product.price;
-  //     })
-  //     return totalPrice
-  // }
+// function that remove OrderProduct from useState
 
-  // const handleRemoveProducToCart = async (product) => {
-    
-  // }
-
+const handleRemoveProducFromCart = (cartProduct) => {
+  setCart(cart.filter(cartProduct => cartProduct.id !-- ))
+}
 
   const showOrders = (cart) => {
     return (<div>
       {cart.map(cartProduct =>  (
-        <OrderProduct key={cartProduct.id} product={cartProduct}/>
+        <OrderProduct key={cartProduct.id} product={cartProduct} handleRemoveProducFromCart={handleRemoveProducFromCart}/>
           ))}
           <div className='cart-products-total-price'>
             <p className='cart-total-price-title'>Total Price</p>

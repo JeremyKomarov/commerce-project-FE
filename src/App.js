@@ -36,13 +36,12 @@ function App() {
     }
 }
 
-  
    
   return (
       <div className="app-container">
         <Header handleAddProducToCart={handleAddProducToCart}/>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home handleAddProducToCart={handleAddProducToCart}/>} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/checkout" element={<Checkout />} />
         </Routes>

@@ -16,31 +16,32 @@ function Home(props) {
   const [showFullProduct, setShowFullProduct] = useState(false);
   const [fullProduct, setFullProduct] = useState();
   const { auth } = useContext(AuthContext)
+
   
   const onShowFullProduct = (product) => {
     setFullProduct(product);
     setShowFullProduct(!showFullProduct);
   }
 
-  const handleAddProducToCart = async (product) => {
-    let isInArray = false;
-    cart.forEach(prd => {
-      if(prd.id === product.id)
-        isInArray = true
-    })
-    if (!isInArray)
-    {
-      const bodyParams = {
-        orderId: null,
-        customerId: customer.customer.id,
-        productId: product.id,
-        quantity: 1,
-        price: product.price
-      };
-      const res = await addProductToCart(bodyParams, auth)
-      setCart([...cart, product]);
-    }
-}
+//   const handleAddProducToCart = async (product) => {
+//     let isInArray = false;
+//     cart.forEach(prd => {
+//       if(prd.id === product.id)
+//         isInArray = true
+//     })
+//     if (!isInArray)
+//     {
+//       const bodyParams = {
+//         orderId: null,
+//         customerId: customer.customer.id,
+//         productId: product.id,
+//         quantity: 1,
+//         price: product.price
+//       };
+//       const res = await addProductToCart(bodyParams, auth)
+//       setCart([...cart, product]);
+//     }
+// }
 
 useEffect(() => {
 }, [cart]);
@@ -50,7 +51,7 @@ useEffect(() => {
        {customer ? 
         <div className='favorite-products-container'>
           {customer.favoriteProducts.map(fPrd => (
-            <FavoriteProduct key={fPrd.id} favoriteProducts={fPrd} handleAddProducToCart={handleAddProducToCart} /> 
+            <FavoriteProduct key={fPrd.id} favoriteProducts={fPrd} handleAddProducToCart={props.handleAddProducToCart} /> 
           ))}
           
         </div>
@@ -59,9 +60,9 @@ useEffect(() => {
 
       <div className='products-container'>
           {products.map(prd => (
-            <Product key={prd.id} product={prd} onShowFullProduct={onShowFullProduct} handleAddProducToCart={handleAddProducToCart}  />
+            <Product key={prd.id} product={prd} onShowFullProduct={onShowFullProduct} handleAddProducToCart={props.handleAddProducToCart}  />
             ))}
-            {showFullProduct && <FullProduct product={fullProduct} handleAddProducToCart={handleAddProducToCart} onShowFullProduct={onShowFullProduct} />}
+            {showFullProduct && <FullProduct product={fullProduct} handleAddProducToCart={props.handleAddProducToCart} onShowFullProduct={onShowFullProduct} />}
       </div>
     </div>
   )

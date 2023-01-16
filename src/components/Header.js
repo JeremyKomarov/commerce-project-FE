@@ -3,10 +3,11 @@ import "./Header.css"
 import Navbar from './navbar/Navbar'
 
 function Header(props) {
+  console.log(props);
 
   return (
     <header>
-      <Navbar cartProducts={props.cartProducts} />
+      <Navbar handleAddProducToCart={props.handleAddProducToCart} />
       <div className='header-main-banner'></div>
     </header>
   )

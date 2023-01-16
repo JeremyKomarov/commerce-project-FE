@@ -16,6 +16,9 @@ function Navbar() {
   
   const handleMobileNav = () => {
     setMobileNavOpen(!mobileNavOpen)
+    setCartOpen(false)
+    setSignInOpen(false)
+
   }
 
   const handleLogInBtn = (index) => {

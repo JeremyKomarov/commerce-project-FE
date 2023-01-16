@@ -1,6 +1,6 @@
 .sign-up-container {
     margin: 0 auto;
-    width: 600px;
+    max-width: 600px;
     background: #fafafa;
     box-shadow: 4px 5px 5px -7px rgba(0,0,0,1);
     padding: 20px;
@@ -107,4 +107,34 @@ a, a:visited {
 
 .line {
     display: inline-block;
+}
+
+@media screen and (max-width: 866px) {
+    .shop-cart-container{
+        width: 100%;
+        margin: 0 auto;
+        background: #fafafa;
+        box-shadow: 4px 5px 5px -7px rgba(0,0,0,1);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    
+}
+
+@media screen and (max-width: 600px) {
+    .shop-cart-container{
+        width: 100%;
+        margin: 0 auto;
+        background: #fafafa;
+        box-shadow: 4px 5px 5px -7px rgba(0,0,0,1);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+  
 }

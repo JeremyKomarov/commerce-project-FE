@@ -6,8 +6,9 @@
     box-shadow: 4px 5px 5px -7px rgba(0,0,0,1);
     z-index: 1000;
     padding: 20px;
-    padding-bottom: 0;
     display: flex;
+    transition: 0.2s ease-in-out;
+
 }
 
 .cart-products-total-price{
@@ -19,6 +20,7 @@
 .cart-products-items
  {
     font-size: 20px;
+    
 }
 
 .cart-total-price,
@@ -38,4 +40,24 @@
     cursor: pointer;
     display: block;
     margin: 10px auto 10px auto;
+}
+
+@media screen and (max-width: 866px) {
+    .shop-cart-container{
+        right: 90px;
+        transition: 0.2s ease-in-out;
+
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .shop-cart-container{
+        margin: 0 auto;
+        width: 100%;
+    
+        left: 0;
+        right: 0;
+    }
+
+  
 }

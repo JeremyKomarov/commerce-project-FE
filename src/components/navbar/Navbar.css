@@ -7,7 +7,7 @@
   background-color: #2a3239;
   margin: 0 auto;
   z-index: 9999;
-
+  transition: 0.1s ease-in-out;
 }
 
 .navbar{
@@ -39,8 +39,7 @@
   margin-right: 30px;
 }
 
-.nav-routes li a
-{
+.nav-routes li a{
   text-decoration: none;
   color: rgb(253, 253, 253);
 }
@@ -76,8 +75,8 @@
       position: fixed;
       top: 2.7rem;
       font-size: 1.2rem;
-      transition: 0.2s ease-in-out;
-      padding: 0 0.3rem 0.3rem 0.2rem;
+      transition: 0.1s ease-in-out;
+      padding: 0 0.3rem 0 0.2rem;
     }
 
     .nav-routes.active {
@@ -88,9 +87,9 @@
 
 @media screen and (max-width: 600px) {
   .nav-routes {
+    transform: translateY(-500px);
     width: 100%;
-    height: 22%;
-    top: -10rem;
+    height: 10px;
     left: 0;
     flex-direction: column;
     z-index: 200;
@@ -98,14 +97,13 @@
     background-color: #2a3239;
     position: fixed;
     font-size: 1.2rem;
-    transition: 0.5s ease-in-out;
+    transition: 0.1s ease-in-out;
   }
 
   .nav-routes.active {
+    height: 120px;
+    transform: translateY(0);
     top: 2.7rem;
-    height: 22%;
-
-    right: 0;
+    
   }
-  
 }

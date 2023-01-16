@@ -22,7 +22,6 @@ function Home(props) {
     setShowFullProduct(!showFullProduct);
   }
 
-
   const handleAddProducToCart = async (product) => {
     let isInArray = false;
     cart.forEach(prd => {
@@ -44,9 +43,7 @@ function Home(props) {
 }
 
 useEffect(() => {
-
 }, [cart]);
-
 
   return (
     <div className='home-container'>

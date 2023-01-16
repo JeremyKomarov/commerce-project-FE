@@ -8,6 +8,8 @@
     padding: 20px;
     display: flex;
     flex-direction: column;
+    transition: 1s ease-in-out;
+
 }
 
 .sign-in-container h1 {
@@ -45,33 +47,23 @@
 
 
 @media screen and (max-width: 866px) {
-    .nav-mobile {
-      display: block;
-      margin: 0.7rem 2rem 0 0;
-    }
+    .sign-in-container{
+        right: 90px;
+        transition: 1s ease-in-out;
 
-    .nav-routes {
-      margin: 0;
-      right: -300px;
-      flex-direction: column;
-      z-index: 999;
-      align-items: center;
-      background-color: #2a3239;
-      position: fixed;
-      top: 2.7rem;
-      font-size: 1.2rem;
-      transition: 0.2s ease-in-out;
-      padding: 0 0.3rem 0.3rem 0.2rem;
-    }
-
-    .nav-routes.active {
-      right: 0;
     }
 }
 
 @media screen and (max-width: 600px) {
     .sign-in-container{
-        width: 100%;
+        margin: 0 auto;
+        /* min-width: 443px; */
+        width: 443px;
+        max-width: 100%;
+
+        top: 168px;
+        left: 0;
+        right: 0;
     }
 
   

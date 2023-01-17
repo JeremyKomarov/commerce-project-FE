@@ -3,8 +3,6 @@ import "./Header.css"
 import Navbar from './navbar/Navbar'
 
 function Header(props) {
-  console.log(props);
-
   return (
     <header>
       <Navbar handleAddProducToCart={props.handleAddProducToCart} />

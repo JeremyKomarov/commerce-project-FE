@@ -10,6 +10,8 @@ const REGISTER_CUSTOMER = () => `/customer/create`
 
 const ADD_ORDER_PRODUCT = () => '/orderProduct/create'
 
+const REMOVE_ORDER_PRODUCT = (productId) => `/orderProduct/${productId}/delete`
+
 const GET_FULL_CUSTOMER_PROFILE = (username) => `/customer/profile/${username}`
 
 const CHECKOUT_ORDER = () => `/order/create`
@@ -34,6 +36,12 @@ export const register = (params) => {
 
 export const addProductToCart = (bodyParam, jwt) => {
   return axios.post(ADD_ORDER_PRODUCT(), bodyParam , 
+  {params: {
+    "Authorization": `Bearer ${jwt}`
+  }})
+}
+export const removeProductFromCart = (productId,jwt) => {
+  return axios.delete(REMOVE_ORDER_PRODUCT(productId), 
   {params: {
     "Authorization": `Bearer ${jwt}`
   }})

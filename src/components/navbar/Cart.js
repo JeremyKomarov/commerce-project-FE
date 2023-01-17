@@ -3,16 +3,20 @@ import { Link } from 'react-router-dom';
 import "./Cart.css"
 import OrderProduct from '../product/OrderProduct';
 import CartContext from "../context/CartProvider";
+import AuthContext from "../context/AuthProvider"
 import countTotalPrice from '../../utils/totalPriceCounter';
+import { removeProductFromCart } from "../../services/api"
 
 
 function Cart(props) {
   const { cart , setCart} = useContext(CartContext)
+  const {auth} = useContext(AuthContext)
 
-// function that remove OrderProduct from useState
 
-const handleRemoveProducFromCart = (cartProduct) => {
-  setCart(cart.filter(cartProduct => cartProduct.id !-- ))
+const handleRemoveProducFromCart = async (cartProductToRemove) => {
+  console.log(cartProductToRemove);
+  await removeProductFromCart(cartProductToRemove.productOrderId , auth);
+  setCart(cart.filter(cartProduct => cartProduct.id !== cartProductToRemove.id))
 }
 
   const showOrders = (cart) => {

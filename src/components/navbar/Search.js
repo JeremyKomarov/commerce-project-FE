@@ -6,7 +6,6 @@ import SearchProduct from '../product/SearchProduct'
 function Search(props) {
     const { products } = useContext(ProductsContext)
     const [searchVal, setSearchVal] = useState("")
-    console.log(props);
 
 
   return (

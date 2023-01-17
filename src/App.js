@@ -32,7 +32,8 @@ function App() {
         price: product.price
       };
       const res = await addProductToCart(bodyParams, auth)
-      setCart([...cart, product]);
+      setCart([...cart, {...product, productOrderId:res.data}]);
+      console.log(cart);
     }
 }
 

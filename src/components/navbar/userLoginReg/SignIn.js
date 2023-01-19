@@ -40,6 +40,7 @@ const handleSubmit = async (e) => {
       setAuth(jwtRes.data.jwt)
       setCustomer(profileAndProductsRes.data)
       setCart(profileAndProductsRes.data.cartProducts)
+      console.log(profileAndProductsRes.data);
       setUsername("");
       setPassword("");
   } catch (err) {

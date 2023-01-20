@@ -10,7 +10,7 @@ function Search(props) {
 
   return (
     <div className='search-container'>
-            <input className='search-input' type='text' placeholder='Search' onChange={(e) => {setSearchVal(e.target.value)}}/>
+        <input className='search-input' type='text' placeholder='Search' onChange={(e) => {setSearchVal(e.target.value)}}/>
         <div className='search-products-container'>
             {products.filter((product) => {
                 if(searchVal === ""){

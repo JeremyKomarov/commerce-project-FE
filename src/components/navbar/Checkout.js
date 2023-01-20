@@ -3,54 +3,48 @@ import "./Checkout.css"
 import CartContext from "../context/CartProvider"
 import CustomerContext from "../context/CustomerProvider"
 import AuthContext from '../context/AuthProvider' 
-import { checkOutOrder } from "../../services/api"
+import { checkOutOrder, getOpenOrder } from "../../services/api"
 import countTotalPrice from '../../utils/totalPriceCounter';
-import OrderProduct from "../product/OrderProduct"
+import dateFormatting from "../../utils/dateFormatting"
 
 
 
-
-function Checkout(props) {
+function Checkout() {
     const {cart, setCart} = useContext(CartContext)
     const {customer} = useContext(CustomerContext)
     const {auth} = useContext(AuthContext)
-    const [address , setAddress] = useState(``)
     const [name , setName] = useState(``)
+    const [country , setCounrty] = useState(``)
+    const [city , setCity] = useState(``)
+    const [phoneNumber , setPhoneNumber] = useState(``)
 
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+            const order = await getOpenOrder(customer.customer.id, auth)
+
+
             const newOrderBody ={
                 customerId: customer.customer.id,
-                orderDate: 2022-12-12,
-                shippingAddress: address,
+                orderDate: dateFormatting(),
+                country: country,
+                city: city,
+                phoneNumber: phoneNumber,
                 totalProducts: cart.length,
-                totalPrice: countTotalPrice(cart),
+                totalPrice:  countTotalPrice(cart),
             }
-            console.log(newOrderBody);
 
-            const res = await checkOutOrder(newOrderBody, auth)
-            setCart([])
-      
+            console.log(auth);
+
+            const res = await checkOutOrder(order.data.id,newOrderBody, auth)
+
+
+            setCart([]) 
     }
 
-
-
     return (
-        <div className='checkout-container'>
         <form className='checkout-form' onSubmit={handleSubmit}>
-
-            <div className='checkout-address'>
-                <label htmlFor='address'>Address:</label>
-                <input
-                    type="text"
-                    id='address'
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
-                    required
-                />
-            </div>
             <div className='checkout-name'>
                 <label htmlFor='address'>Name:</label>
                 <input
@@ -61,20 +55,42 @@ function Checkout(props) {
                    required
                    />
             </div>
+            <div className='checkout-country'>
+                <label htmlFor='country'>Country:</label>
+                <input
+                    type="text"
+                    id='country'
+                    value={country}
+                    onChange={(e) => setCounrty(e.target.value)}
+                    required
+                />
+            </div>
+            <div className='checkout-city'>
+                <label htmlFor='city'>City:</label>
+                <input
+                    type="text"
+                    id='city'
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                    required
+                />
+            </div>
+            <div className='checkout-phone-number'>
+                <label htmlFor='phoneNumber'>Phone Number:</label>
+                <input
+                    type="text"
+                    id='phoneNumber'
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    required
+                />
+            </div>
 
-            <button className='checkout-btn' type='submuit' disabled={!address || !name}>
+            <button className='checkout-btn' type='submuit' disabled={!country || !name}>
             Finish Order
             </button>
-        </form> 
 
-        <div className='checkout-cart'>
-            {cart.map(prd => (
-               <OrderProduct key={prd.id} product={prd}/>
-            ))}
-
-        </div>
-                 
-        </div>
+        </form>  
       )
     }
     

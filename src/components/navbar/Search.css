@@ -1,6 +1,7 @@
 .search-container{
     margin:  0.6rem 20px;
-    width: 50rem;
+    width: 45rem;
+
 }
 .search-input{
     width: 100%;
@@ -17,18 +18,11 @@
 
 @media screen and (max-width: 866px) {
     .search-container{
-       max-width: 60%;
-  
 
     }
 }
 
 @media screen and (max-width: 600px) {
     .search-container{
-        max-width: 60%;
-
-
     }
-
-  
 }

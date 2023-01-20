@@ -46,8 +46,10 @@ const handleRemoveProducFromCart = async (cartProductToRemove) => {
 
   return (
     <div className='shop-cart-container'>
+    
     {cart.length > 0  ? 
-      showOrders(cart) : showNothing()}
+      showOrders(cart) : showNothing()
+    }
   </div>
   )
 }

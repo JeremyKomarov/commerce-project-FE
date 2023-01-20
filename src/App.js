@@ -1,9 +1,10 @@
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect} from 'react'
 import { Route, Routes } from "react-router-dom";
-import AuthContext, { AuthProvider } from "./components/context/AuthProvider";
+import AuthContext from "./components/context/AuthProvider";
 import CartContext from "./components/context/CartProvider";
+import ProductsContext from './components/context/ProductsProvider';
 import CustomerContext  from "./components/context/CustomerProvider";
-import { addProductToCart } from './services/api'
+import { addProductToCart, getAllProducts } from './services/api'
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './components/navbar/Home';
@@ -14,7 +15,9 @@ import Checkout from './components/navbar/Checkout';
 function App() {
   const { auth } = useContext(AuthContext)
   const { cart, setCart } = useContext(CartContext)
-  const {customer} = useContext(CustomerContext)
+  const { customer } = useContext(CustomerContext)
+  const { setProducts } = useContext(ProductsContext)
+
 
   const handleAddProducToCart = async (product) => {
     let isInArray = false;
@@ -32,11 +35,19 @@ function App() {
         price: product.price
       };
       const res = await addProductToCart(bodyParams, auth)
-      setCart([...cart, {...product, productOrderId:res.data}]);
-      console.log(cart);
+      setCart([...cart, {...product, productOrderId:res.data}])
+      
     }
 }
 
+
+useEffect(() => {
+  getAllProducts()
+  .then(res => {
+    setProducts(res.data)
+  })
+
+}, [cart] )
    
   return (
       <div className="app-container">
@@ -45,6 +56,7 @@ function App() {
           <Route path="/" element={<Home handleAddProducToCart={handleAddProducToCart}/>} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/checkout" element={<Checkout />} />
+          
         </Routes>
         <Footer/>
       </div>

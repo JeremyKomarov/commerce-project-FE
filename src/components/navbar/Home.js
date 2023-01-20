@@ -1,10 +1,7 @@
-import React, {useState, useContext, useEffect} from 'react'
+import React, { useState, useContext } from 'react'
 import "./Home.css"
 import ProductsContext  from "../context/ProductsProvider";
 import CustomerContext  from "../context/CustomerProvider";
-import AuthContext from "../context/AuthProvider";
-import CartContext from "../context/CartProvider";
-import { addProductToCart } from '../../services/api'
 import Product from '../product/Product'
 import FullProduct from '../product/FullProduct';
 import FavoriteProduct from '../product/FavoriteProduct'
@@ -14,7 +11,6 @@ function Home(props) {
   const { customer } = useContext(CustomerContext)
   const [showFullProduct, setShowFullProduct] = useState(false);
   const [fullProduct, setFullProduct] = useState();
-  const { auth } = useContext(AuthContext)
 
   
   const onShowFullProduct = (product) => {

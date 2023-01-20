@@ -80,19 +80,23 @@ function Navbar(props) {
           <Search handleAddProducToCart={props.handleAddProducToCart}/>
           
           <div className={`nav-routes ${!mobileNavOpen ? 'active' : ""}`}>
-            {!customer ?  
+            {
+              !customer ?  
               <li className={`nav-login ${activeIndex === 0 ? 'active' : ''}`} onClick={() =>handleLogInBtn(0)}>
                 Login
-              </li>
-              :
+              </li> :
               <li className={`nav-logout`} onClick={() => handleLogOutBtn(null)}>
                 Log Out
               </li>
             }
 
-            <li className={`nav-signup ${activeIndex === 1 ? 'active' : ''}`} onClick={() => handleSignUp(1)}>
-              <Link to="/signup">Sign Up</Link>
-            </li>
+            {
+              !customer &&    
+              <li className={`nav-signup ${activeIndex === 1 ? 'active' : ''}`} onClick={() => handleSignUp(1)}>
+                <Link to="/signup">Sign Up</Link>
+              </li>  
+            }
+          
 
             <li className={`shop-cart-btn ${activeIndex === 2 ? 'active' : ''}`} onClick={() => handleCart(2)}>
               <FaShoppingBag />

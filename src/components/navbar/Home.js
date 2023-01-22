@@ -22,15 +22,13 @@ function Home(props) {
 
   return (
     <div className='home-container'>
-       {customer ? 
+       {customer && 
         <div className='favorite-products-container'>
           {customer.favoriteProducts.map(fPrd => (
             <FavoriteProduct key={fPrd.id} favoriteProducts={fPrd} handleAddProducToCart={props.handleAddProducToCart} /> 
           ))}
-          
-        </div>
-        : 
-        <div className='favorite-products-container-empty'>Log in</div>}
+        </div>}
+
 
       <div className='products-container'>
           {products.map(prd => (

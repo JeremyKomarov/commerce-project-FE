@@ -96,6 +96,11 @@ function Navbar(props) {
                 <Link to="/signup">Sign Up</Link>
               </li>  
             }
+
+            <li>
+              <Link to="profile">Profile</Link>
+            </li>
+
           
 
             <li className={`shop-cart-btn ${activeIndex === 2 ? 'active' : ''}`} onClick={() => handleCart(2)}>

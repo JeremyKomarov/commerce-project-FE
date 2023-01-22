@@ -18,6 +18,9 @@ const GET_OPEN_ORDER = (customerId) => `/order/${customerId}/open`
 
 const CHECKOUT_ORDER = (orderId) => `/order/${orderId}/update`
 
+const DELETE_CUSTOMER = (customerId) => `/customer/${customerId}/delete`
+
+
 
 
 
@@ -71,5 +74,13 @@ export const checkOutOrder = (orderId,bodyParam, jwt) => {
   return axios.put(CHECKOUT_ORDER(orderId), bodyParam, {params: {
     "Authorization": `Bearer ${jwt}`
   }})
+}
+
+export const deleteCustomer = (customerId, jwt) => {
+  return axios.delete(DELETE_CUSTOMER(customerId), {
+    params: {
+      "Authorization": `Bearer ${jwt}`
+    }
+  });
 }
 

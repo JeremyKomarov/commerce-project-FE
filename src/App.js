@@ -1,4 +1,4 @@
-import { useContext, useEffect} from 'react'
+import { useContext, useEffect,useState} from 'react'
 import { Route, Routes } from "react-router-dom";
 import AuthContext from "./components/context/AuthProvider";
 import CartContext from "./components/context/CartProvider";
@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import Home from './components/navbar/Home';
 import Signup from './components/navbar/userLoginReg/Signup'
 import Checkout from './components/navbar/Checkout';
+import Profile from './components/navbar/Profile';
 
 
 function App() {
@@ -17,6 +18,8 @@ function App() {
   const { cart, setCart } = useContext(CartContext)
   const { customer } = useContext(CustomerContext)
   const { setProducts } = useContext(ProductsContext)
+  const [errMsg, setErrMsg] = useState("");
+
 
 
   const handleAddProducToCart = async (product) => {
@@ -34,9 +37,21 @@ function App() {
         quantity: 1,
         price: product.price
       };
+      try{
       const res = await addProductToCart(bodyParams, auth)
       setCart([...cart, {...product, productOrderId:res.data}])
-      
+    } catch(err){
+      if(!err.response){
+        setErrMsg('No Server Response')
+      }else if(err.response.status === 500){
+        setErrMsg('Product Out Of Stock')
+            console.log(setErrMsg);
+      }else {
+        setErrMsg("Authentication Failed");
+            console.log(setErrMsg);
+
+      }
+    }      
     }
 }
 
@@ -56,7 +71,7 @@ useEffect(() => {
           <Route path="/" element={<Home handleAddProducToCart={handleAddProducToCart}/>} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/checkout" element={<Checkout />} />
-          
+          <Route path="/profile" element={<Profile />} />
         </Routes>
         <Footer/>
       </div>

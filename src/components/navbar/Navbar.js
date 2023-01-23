@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { Link,} from "react-router-dom";
 import "./Navbar.css"
-import { FaShoppingBag, FaTimes, FaBars } from "react-icons/fa";
+import { FaShoppingBag, FaTimes, FaBars, FaUserAlt, FaRegHeart, FaHeart } from "react-icons/fa";
 import CustomerContext from '../context/CustomerProvider';
 import Cart from './Cart'
 import SignIn from './userLoginReg/SignIn';
@@ -25,6 +25,12 @@ function Navbar(props) {
 
   }
 
+  const handleLogoBtn = (index) => {
+    handleIndex(index)
+    setCartOpen(false)
+    setSignInOpen(false)
+  }
+
   const handleLogInBtn = (index) => {
     handleIndex(index)
     setCartOpen(false)
@@ -39,6 +45,20 @@ function Navbar(props) {
     window.location.reload()
   }
 
+  const handleWishlist = (index) => {
+    handleIndex(index)
+    setCartOpen(false)
+    setSignInOpen(false)
+  }
+
+  const handleProfile = (index) => {
+    handleIndex(index)
+    setCartOpen(false)
+    setSignInOpen(false)
+  }
+
+
+
   const handleSignUp = (index) => {
     handleIndex(index)
     setCartOpen(false)
@@ -51,11 +71,7 @@ function Navbar(props) {
     setSignInOpen(false)
   }
 
-  const handleLogoBtn = (index) => {
-    handleIndex(index)
-    setCartOpen(false)
-    setSignInOpen(false)
-  }
+ 
 
   const handleIndex = (index) => {
     activeIndex === index ? setActiveIndex(null) : setActiveIndex(index); 
@@ -97,15 +113,22 @@ function Navbar(props) {
               </li>  
             }
 
-            <li>
-              <Link to="profile">Profile</Link>
-            </li>
 
-          
+            <li className={`wishlist-btn ${activeIndex === 2 ? 'active' : ''}`} onClick={() => handleWishlist(2)}>
+              <Link to="/wishlist"><FaRegHeart /></Link>
+            </li> 
 
-            <li className={`shop-cart-btn ${activeIndex === 2 ? 'active' : ''}`} onClick={() => handleCart(2)}>
+            {
+              customer &&  
+              <li className={`profile-btn ${activeIndex === 3 ? 'active' : ''}`} onClick={() => handleProfile(3)}>
+                <Link to="/profile"><FaUserAlt /></Link>
+              </li> 
+            }
+           
+            <li className={`shop-cart-btn ${activeIndex === 4 ? 'active' : ''}`} onClick={() => handleCart(4)}>
               <FaShoppingBag />
             </li>
+
           </div>
 
         <div className="nav-mobile" onClick={handleMobileNav}>{!mobileNavOpen ? <FaTimes/> : <FaBars/>}</div>

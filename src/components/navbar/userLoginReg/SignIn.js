@@ -3,6 +3,7 @@ import "./SignIn.css"
 import AuthContext from "../../context/AuthProvider";
 import CustomerContext from "../../context/CustomerProvider";
 import CartContext from "../../context/CartProvider";
+import WishlistContext from "../../context/WishlistProvider";
 import { authenticate, getFullCustomerProfile } from "../../../services/api"
 
 
@@ -10,6 +11,7 @@ function SignIn() {
   const { setAuth } = useContext(AuthContext);
   const { setCustomer } = useContext(CustomerContext);
   const { setCart } = useContext(CartContext);
+  const { setWishlist } = useContext(WishlistContext);
 
   const userRef = useRef();
   const errRef = useRef();
@@ -35,15 +37,12 @@ const handleSubmit = async (e) => {
       const jwtRes = await authenticate({ username, password} )
       const profileAndProductsRes = await getFullCustomerProfile(username, jwtRes.data.jwt)      
 
-      
       setSuccess(true);
       setAuth(jwtRes.data.jwt)
       setCustomer(profileAndProductsRes.data)
-      if(profileAndProductsRes.data.cartProducts){
-        setCart(profileAndProductsRes.data.cartProducts)
-      }else{
-        setCart([])
-      }
+
+      if(profileAndProductsRes.data.cartProducts) setCart(profileAndProductsRes.data.cartProducts)
+      if(profileAndProductsRes.data.wishListProducts) setWishlist(profileAndProductsRes.data.cartProducts)
       
       setUsername("");
       setPassword("");

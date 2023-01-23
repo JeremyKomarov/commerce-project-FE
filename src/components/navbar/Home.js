@@ -4,7 +4,6 @@ import ProductsContext  from "../context/ProductsProvider";
 import CustomerContext  from "../context/CustomerProvider";
 import Product from '../product/Product'
 import FullProduct from '../product/FullProduct';
-import FavoriteProduct from '../product/FavoriteProduct'
 
 function Home(props) {
   const { products } = useContext(ProductsContext)
@@ -22,14 +21,6 @@ function Home(props) {
 
   return (
     <div className='home-container'>
-       {customer && 
-        <div className='favorite-products-container'>
-          {customer.favoriteProducts.map(fPrd => (
-            <FavoriteProduct key={fPrd.id} favoriteProducts={fPrd} handleAddProducToCart={props.handleAddProducToCart} /> 
-          ))}
-        </div>}
-
-
       <div className='products-container'>
           {products.map(prd => (
             <Product key={prd.id} product={prd} onShowFullProduct={onShowFullProduct} handleAddProducToCart={props.handleAddProducToCart}  />

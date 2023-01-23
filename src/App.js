@@ -11,6 +11,7 @@ import Home from './components/navbar/Home';
 import Signup from './components/navbar/userLoginReg/Signup'
 import Checkout from './components/navbar/Checkout';
 import Profile from './components/navbar/Profile';
+import Wishlist from './components/navbar/Wishlist';
 
 
 function App() {
@@ -72,6 +73,7 @@ useEffect(() => {
           <Route path="/signup" element={<Signup />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/wishlist" element={<Wishlist />} />
         </Routes>
         <Footer/>
       </div>

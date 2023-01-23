@@ -2,7 +2,7 @@ import { axiosInstance as axios } from "./axiosInstance";
 
 const ALL_PRODUCTS = () => `/product/all`;
 
-const FAVORITE_PRODUCTS = () => `/favorite/all`;
+const WISHLIST_PRODUCTS = () => `/wishlist/all`;
 
 const AUTHENTICATE = () => `/authenticate`
 
@@ -29,8 +29,8 @@ export const getAllProducts = async () => {
   return axios.get(ALL_PRODUCTS());
 }
 
-export const getFavoriteProducts = () => {
-  return axios.get(FAVORITE_PRODUCTS());
+export const getWishlistProducts = () => {
+  return axios.get(WISHLIST_PRODUCTS());
 }
 
 export const authenticate = (params) => {

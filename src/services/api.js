@@ -37,7 +37,7 @@ export const authenticate = (params) => {
   return axios.post(AUTHENTICATE(), params);
 }
 
-export const register = (params) => {
+export const registerCustomer = (params) => {
   return axios.post(REGISTER_CUSTOMER(), params)
 }
 

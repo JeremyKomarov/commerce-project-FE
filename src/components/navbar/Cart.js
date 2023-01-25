@@ -14,6 +14,7 @@ function Cart(props) {
 
 
 const handleRemoveProducFromCart = async (cartProductToRemove) => {
+  console.log(cartProductToRemove);
   await removeProductFromCart(cartProductToRemove.productOrderId , auth);
   setCart(cart.filter(cartProduct => cartProduct.id !== cartProductToRemove.id))
 }

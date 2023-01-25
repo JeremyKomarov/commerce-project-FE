@@ -4,6 +4,8 @@ const ALL_PRODUCTS = () => `/product/all`;
 
 const WISHLIST_PRODUCTS = () => `/wishlist/all`;
 
+const ADD_WISHLIST_PRODUCT = () => `wishlist/create`
+
 const AUTHENTICATE = () => `/authenticate`
 
 const REGISTER_CUSTOMER = () => `/customer/create`
@@ -31,6 +33,13 @@ export const getAllProducts = async () => {
 
 export const getWishlistProducts = () => {
   return axios.get(WISHLIST_PRODUCTS());
+}
+
+export const addWishlistProduct = (bodyParam, jwt) => {
+  return axios.post(ADD_WISHLIST_PRODUCT(), bodyParam, 
+  {params: {
+    "Authorization": `Bearer ${jwt}`
+  }})
 }
 
 export const authenticate = (params) => {

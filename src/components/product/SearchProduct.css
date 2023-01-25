@@ -29,15 +29,12 @@
 }
 
 .search-product-add-to-cart {
-    background: #ca5252;
-    width: 25px;
-    height: 25px;
-    text-align: center;
-    line-height: 25px;
-    border-radius: 50px;
+    width: 35px;
+    height: 35px;
+    color: #ca5252;
     cursor: pointer;
-    font-weight: 600;
-    margin: 0.5rem;
+    transition: transform 0.3s ease;
+    margin: 0 0.5rem;
 }
 
 

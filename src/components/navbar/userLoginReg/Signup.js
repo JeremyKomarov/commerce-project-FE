@@ -22,7 +22,7 @@ function Signup() {
     const { register, handleSubmit, reset, formState: { errors } } = useForm({
     resolver: yupResolver(validationSchema)
   });
-    const  [userInfo, setUserInfo ] = useState(``);
+    const [userInfo, setUserInfo] = useState(``);
     const [errMsg, setErrMsg] = useState("");
 
 
@@ -41,11 +41,11 @@ function Signup() {
       }
     }
     };
-
      
     return (
       <div className='signup-container'>
         <h2 className='signup-title'>Registration</h2>
+        {errMsg}
         <form className='signup-form' onSubmit={handleSubmit(onSubmit)}>
           <div className='signup-form-left'>
             <div className='signup-form-field'>
@@ -135,7 +135,6 @@ function Signup() {
               />
             </div>
           </div>
-          {errMsg}
           <button className='signup-btn'>Submit</button>
       </form>
     </div>

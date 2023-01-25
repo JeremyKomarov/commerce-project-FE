@@ -4,7 +4,8 @@ import AuthContext from "./components/context/AuthProvider";
 import CartContext from "./components/context/CartProvider";
 import ProductsContext from './components/context/ProductsProvider';
 import CustomerContext  from "./components/context/CustomerProvider";
-import { addProductToCart, getAllProducts } from './services/api'
+import WishlistContext  from "./components/context/WishlistProvider";
+import { addProductToCart, getAllProducts, addWishlistProduct } from './services/api'
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './components/navbar/Home';
@@ -14,12 +15,45 @@ import Profile from './components/navbar/Profile';
 import Wishlist from './components/navbar/Wishlist';
 
 
+
 function App() {
   const { auth } = useContext(AuthContext)
   const { cart, setCart } = useContext(CartContext)
   const { customer } = useContext(CustomerContext)
+  const { wishlist, setWishlist } = useContext(WishlistContext)
   const { setProducts } = useContext(ProductsContext)
   const [errMsg, setErrMsg] = useState("");
+
+
+  const handleProducToWishlist = async (product) => {
+    let isInArray = false;
+    wishlist && wishlist.forEach(prd => {
+      if(prd.id === product.id)
+        isInArray = true
+    })
+    if (!isInArray)
+    {
+      const bodyParams = {
+        customerId: customer.customer.id,
+        productId: product.id,
+      };
+      try{
+      const res = await addWishlistProduct(bodyParams, auth)
+      setWishlist([...wishlist, {...product, productOrderId:res.data}])
+    } catch(err){
+      if(!err.response){
+        setErrMsg('No Server Response')
+      }else if(err.response.status === 500){
+        setErrMsg('Product Out Of Stock')
+            console.log(setErrMsg);
+      }else {
+        setErrMsg("Authentication Failed");
+            console.log(setErrMsg);
+
+      }
+    }      
+    }
+}
 
 
 
@@ -69,7 +103,7 @@ useEffect(() => {
       <div className="app-container">
         <Header handleAddProducToCart={handleAddProducToCart}/>
         <Routes>
-          <Route path="/" element={<Home handleAddProducToCart={handleAddProducToCart}/>} />
+          <Route path="/" element={<Home handleAddProducToCart={handleAddProducToCart} handleProducToWishlist={handleProducToWishlist}/>}/>
           <Route path="/signup" element={<Signup />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/profile" element={<Profile />} />

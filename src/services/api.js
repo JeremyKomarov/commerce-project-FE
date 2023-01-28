@@ -6,6 +6,8 @@ const WISHLIST_PRODUCTS = () => `/wishlist/all`;
 
 const ADD_WISHLIST_PRODUCT = () => `wishlist/create`
 
+const REMOVE_WISHLIST_PRODUCT = (productId) => `wishlist/${productId}/delete`
+
 const AUTHENTICATE = () => `/authenticate`
 
 const REGISTER_CUSTOMER = () => `/customer/create`
@@ -23,10 +25,6 @@ const CHECKOUT_ORDER = (orderId) => `/order/${orderId}/update`
 const DELETE_CUSTOMER = (customerId) => `/customer/${customerId}/delete`
 
 
-
-
-
-
 export const getAllProducts = async () => {
   return axios.get(ALL_PRODUCTS());
 }
@@ -37,6 +35,13 @@ export const getWishlistProducts = () => {
 
 export const addWishlistProduct = (bodyParam, jwt) => {
   return axios.post(ADD_WISHLIST_PRODUCT(), bodyParam, 
+  {params: {
+    "Authorization": `Bearer ${jwt}`
+  }})
+}
+
+export const removeWishlistProduct = (wishlistProductId,jwt) => {
+  return axios.delete(REMOVE_WISHLIST_PRODUCT(wishlistProductId), 
   {params: {
     "Authorization": `Bearer ${jwt}`
   }})
@@ -56,6 +61,7 @@ export const addProductToCart = (bodyParam, jwt) => {
     "Authorization": `Bearer ${jwt}`
   }})
 }
+
 export const removeProductFromCart = (productId,jwt) => {
   return axios.delete(REMOVE_ORDER_PRODUCT(productId), 
   {params: {

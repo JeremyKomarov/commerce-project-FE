@@ -1,47 +1,50 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { Link,} from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Navbar.css"
-import { FaShoppingBag, FaTimes, FaBars, FaUserAlt, FaRegHeart, FaHeart } from "react-icons/fa";
-import CustomerContext from '../context/CustomerProvider';
-import Cart from './Cart'
-import SignIn from './userLoginReg/SignIn';
-import Search from './Search';
+import { FaShoppingBag, FaTimes, FaBars, FaUserAlt, FaRegHeart } from "react-icons/fa";
+import FullCustomerDetailsContext from '../context/FullCustomerDetailsProvider';
+import Cart from '../cart/Cart'
+import SignIn from '../userLoginReg/SignIn';
+import Search from '../search/Search';
+
 
 
 function Navbar(props) {
-  const { customer, setCustomer } = useContext(CustomerContext)
-  
-  const [activeIndex, setActiveIndex] = useState(null);
-  const [cartOpen, setCartOpen] = useState(false)
-  const [signInOpen, setSignInOpen] = useState(false)
-  const [mobileNavOpen, setMobileNavOpen] = useState(true)
-
+  const { fullCustomerDetails, setFullCustomerDetails } = useContext(FullCustomerDetailsContext)
+  const [ activeIndex, setActiveIndex ] = useState(null);
+  const [ cartOpen, setCartOpen ] = useState(false)
+  const [ signInOpen, setSignInOpen ] = useState(false)
+  const [ mobileNavOpen, setMobileNavOpen ] = useState(true)
+  const [ wishlistOpen, setWishlistOpen ] = useState(false)
 
   
   const handleMobileNav = () => {
     setMobileNavOpen(!mobileNavOpen)
     setCartOpen(false)
     setSignInOpen(false)
-
+    setWishlistOpen(false)
   }
 
   const handleLogoBtn = (index) => {
     handleIndex(index)
     setCartOpen(false)
     setSignInOpen(false)
+    setWishlistOpen(false)
+    setMobileNavOpen(true)
   }
 
   const handleLogInBtn = (index) => {
     handleIndex(index)
     setCartOpen(false)
     setSignInOpen(!signInOpen)
+    setWishlistOpen(false)
   }
 
   const handleLogOutBtn = (index) => {
     handleIndex(index)
     setCartOpen(false)
     setSignInOpen(false)
-    setCustomer(``)
+    setFullCustomerDetails(``)
     window.location.reload()
   }
 
@@ -49,26 +52,32 @@ function Navbar(props) {
     handleIndex(index)
     setCartOpen(false)
     setSignInOpen(false)
+    setMobileNavOpen(!mobileNavOpen)
   }
 
   const handleProfile = (index) => {
     handleIndex(index)
     setCartOpen(false)
     setSignInOpen(false)
+    setWishlistOpen(false)
+    setMobileNavOpen(!mobileNavOpen)
+
   }
-
-
 
   const handleSignUp = (index) => {
     handleIndex(index)
     setCartOpen(false)
     setSignInOpen(false)
+    setWishlistOpen(false)
+    setMobileNavOpen(!mobileNavOpen)
   }
 
   const handleCart = (index) => {
     handleIndex(index)
     setCartOpen(!cartOpen)
     setSignInOpen(false)
+    setWishlistOpen(false)
+    setMobileNavOpen(!mobileNavOpen)
   }
 
  
@@ -77,13 +86,15 @@ function Navbar(props) {
     activeIndex === index ? setActiveIndex(null) : setActiveIndex(index); 
   }
 
+
+
   useEffect(() => {
-    if(customer){
+    if(fullCustomerDetails){
         setTimeout(() => {
           setSignInOpen(false)
         }, 3000);
     }
-}, [customer])
+}, [fullCustomerDetails])
 
   return (
     <nav className='nav-container'>
@@ -97,7 +108,7 @@ function Navbar(props) {
           
           <div className={`nav-routes ${!mobileNavOpen ? 'active' : ""}`}>
             {
-              !customer ?  
+              !fullCustomerDetails ?  
               <li className={`nav-login ${activeIndex === 0 ? 'active' : ''}`} onClick={() =>handleLogInBtn(0)}>
                 Login
               </li> :
@@ -107,7 +118,7 @@ function Navbar(props) {
             }
 
             {
-              !customer &&    
+              !fullCustomerDetails &&    
               <li className={`nav-signup ${activeIndex === 1 ? 'active' : ''}`} onClick={() => handleSignUp(1)}>
                 <Link to="/signup">Sign Up</Link>
               </li>  
@@ -119,7 +130,7 @@ function Navbar(props) {
             </li> 
 
             {
-              customer &&  
+              fullCustomerDetails &&  
               <li className={`profile-btn ${activeIndex === 3 ? 'active' : ''}`} onClick={() => handleProfile(3)}>
                 <Link to="/profile"><FaUserAlt /></Link>
               </li> 

@@ -1,0 +1,10 @@
+.last-order-product-container{
+    max-width: 100px;
+}
+.last-order-product-container img {
+    width: 100px;
+}
+
+.last-order-product-container p {
+    text-align: center;
+}

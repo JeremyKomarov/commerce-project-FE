@@ -4,7 +4,7 @@ import "./Footer.css"
 function Footer() {
   return (
     <footer>
-        copyright &copy;
+         <p>&copy; 2023 Jeremy Komarov</p>
     </footer>
   )
 }

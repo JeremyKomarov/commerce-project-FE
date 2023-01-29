@@ -16,3 +16,17 @@
     display: flex;
     gap: 20px;
 }
+
+@media screen and (max-width: 600px) {
+    .last-order-container{
+        flex-wrap: wrap;
+        max-width: none;
+        display: flex;
+        justify-content: center;
+    }
+    .last-order-products{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+  }

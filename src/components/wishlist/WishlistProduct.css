@@ -62,8 +62,7 @@
     transition: transform 0.3s ease;
     cursor: pointer;
     margin-right: 5px;
-
-
+    color: #ca5252;
 }
 
 .wishlist-product-add-to-cart {

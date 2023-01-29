@@ -49,7 +49,7 @@ function SignIn() {
   return (
     <>
     {fullCustomerDetails ? (
-        <div className='signin-container'>
+        <div className='signin-container success'>
           <h1>You are logged in!</h1>
           <br />
         </div>

@@ -8,7 +8,6 @@ import WishlistContext from '../context/WishlistProvider';
 function FullProduct(props) {
   const { name, fullDescription, price, img, quantity} = props.product
   const { wishlist } = useContext(WishlistContext)
-  console.log();
 
 
   const renderWishlistButton = () => {

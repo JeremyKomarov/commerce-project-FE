@@ -1,4 +1,4 @@
-import React,{useContext} from 'react'
+import React,{ useContext, useState } from 'react'
 import AuthContext from "../context/AuthProvider"
 import FullCustomerDetailsContext from "../context/FullCustomerDetailsProvider"
 import CartContext from "../context/CartProvider"
@@ -15,6 +15,7 @@ function Profile() {
     const { fullCustomerDetails, setFullCustomerDetails } = useContext(FullCustomerDetailsContext);
     const { setCart } = useContext(CartContext);
     const { orders , setOrders } = useContext(OrdersContext)
+    const [ customerDeleted , setCustomerDeleted ] = useState(false)
 
     const navigate = useNavigate();
 
@@ -46,21 +47,28 @@ function Profile() {
       setFullCustomerDetails();
       setCart([]);
       setOrders([]);
-      navigate('/', {replace: true});
+      setCustomerDeleted(true)
+      setTimeout(() => {
+        navigate('/', { replace: true });
+      }, 2000);
   }
 
-
-
-
-
   return (
-    <div className='profile-container'>
-      {orders.length > 0  ? 
-      showLastOrders(orders) : showNothing()
-    }
-      <button className='profile-delete-btn' onClick={handleDeleteCustomerBtn}>Click Here To Delete Account</button>
+    <>
+    {!customerDeleted ? (
+      <div className="profile-container">
+        {orders.length > 0 ? showLastOrders(orders) : showNothing()}
+        <button className="profile-delete-btn" onClick={handleDeleteCustomerBtn}>
+          Delete Account
+        </button>
       </div>
-  )
+    ) : (
+      <div className="profile-container">
+        <h2>Account Deleted</h2>
+      </div>
+    )}
+  </>
+);
 }
 
 export default Profile

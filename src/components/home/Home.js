@@ -13,7 +13,6 @@ function Home(props) {
 
 
   const onShowFullProduct = (product) => {
-    console.log(product);
     setFullProduct(product);
     setShowFullProduct(!showFullProduct);
   }

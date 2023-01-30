@@ -52,7 +52,6 @@ function App() {
       }
       try{
         const res = await addWishlistProduct(bodyParams, auth)
-        console.log(res.data);
         setWishlist([...wishlist, {...product, indexId:res.data}])
     } catch(err){
       if(!err.response){

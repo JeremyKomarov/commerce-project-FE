@@ -5,9 +5,7 @@ import { IoIosAddCircle } from "react-icons/io";
 
 function WishlistProduct(props) {
   const { name, viewDescription, price, img, quantity} = props.product
-
-  console.log(props.product);
-
+  
   return (
     <div className='wishlist-product'>
         <img src={img} alt={name} onClick={() => props.onShowFullProduct(props.product)} />

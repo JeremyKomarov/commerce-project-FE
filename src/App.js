@@ -5,7 +5,7 @@ import CartContext from "./components/context/CartProvider";
 import ProductsContext from './components/context/ProductsProvider';
 import FullCustomerDetailsContext  from "./components/context/FullCustomerDetailsProvider";
 import WishlistContext  from "./components/context/WishlistProvider";
-import { addProductToCart, getAllProducts, addWishlistProduct, removeWishlistProduct } from './services/api'
+import { getAllProducts , addProductToCart, addWishlistProduct, removeWishlistProduct } from './services/api'
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import Home from './components/home/Home';
@@ -25,12 +25,18 @@ function App() {
   const [errMsg, setErrMsg] = useState("");
 
   const handleRemoveProducFromWishlist = async (wishlistProductToRemove) => {
-    console.log(wishlistProductToRemove);
     const wishlistProductToRemoveId = wishlist.filter(product => product.id === wishlistProductToRemove.id);
     await removeWishlistProduct(wishlistProductToRemoveId[0].indexId, auth);
     setWishlist(wishlist.filter(wishlistProduct => wishlistProduct.id !== wishlistProductToRemove.id))
   }
-  
+
+  useEffect(() => {
+    getAllProducts()
+      .then(res => {
+        setProducts(res.data);
+      })
+  }, [cart]);
+
 
   const handleProducToWishlist = async (product) => {
     let isInArray = false;
@@ -53,10 +59,8 @@ function App() {
         setErrMsg('No Server Response')
       }
     }      
-    }
+  }
 }
-
-
 
   const handleAddProducToCart = async (product) => {
     let isInArray = false;
@@ -85,17 +89,9 @@ function App() {
         setErrMsg("Authentication Failed");
       }
     }      
-    }
+  }
 }
 
-
-useEffect(() => {
-  getAllProducts()
-  .then(res => {
-    setProducts(res.data)
-  })
-
-}, [cart] )
    
   return (
       <div className="app-container">

@@ -11,14 +11,18 @@
     left: 50%;
     transform: translate(-50%, -50%);
     overflow: hidden;
+
 }
 
 .full-product-img-container{
-    width: 100%;
+    width: 500px;
+    height: 455px;
     overflow: hidden;
+
 }
 .full-product img {
-    width: 100%;
+    width: 500px;
+    height: 455px;
     cursor: pointer;
     border-radius: 10px 10px 0 0;
     transition: transform 0.3s ease;

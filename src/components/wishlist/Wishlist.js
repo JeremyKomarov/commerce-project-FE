@@ -12,14 +12,19 @@ function Wishlist(props) {
   return (
     <div className='wishlist-container-main'>
       <div className='wishlist-container'>
-      {wishlist.map(prd => (
-            <WishlistProduct  
-              key={prd.id} 
-              product={prd} 
-              handleAddProducToCart={props.handleAddProducToCart} 
-              handleRemoveProducFromWishlist={props.handleRemoveProducFromWishlist}
-                />
-            ))}
+        {wishlist <= 0 
+          ? 
+        <h2>Wishlist is empty</h2>
+          :
+        wishlist.map(prd => (
+          <WishlistProduct  
+            key={prd.id} 
+            product={prd} 
+            handleAddProducToCart={props.handleAddProducToCart} 
+            handleRemoveProducFromWishlist={props.handleRemoveProducFromWishlist}
+            />
+          ))
+        }
         
       </div>
     </div>

@@ -20,6 +20,7 @@ function Product(props) {
           <FaRegHeart className='product-wish-btn' onClick={() => props.handleProducToWishlist(props.product)} />
     }
 
+
   
   return (
     <div className='product'>
@@ -33,7 +34,7 @@ function Product(props) {
           <p className='product-quantity'>{quantity > 0 ? `only: ${quantity} Left` : `Out Of Stock`}</p>
           <div className='product-right'>
             {renderWishlistButton()}
-            <IoIosAddCircle className='product-add-to-cart' onClick={() => props.handleAddProducToCart(props.product)} />
+            <IoIosAddCircle className='product-add-to-cart' onClick={quantity > 0 ? () => props.handleAddProducToCart(props.product) : null} />
           </div>
         </div>
     </div>

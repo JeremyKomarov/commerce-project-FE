@@ -11,3 +11,9 @@
     justify-content: space-around;
     align-items: center;
 }
+
+.home-hello{
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 24px;
+}

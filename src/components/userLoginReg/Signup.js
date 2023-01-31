@@ -24,7 +24,6 @@ function Signup() {
       .required("password is required"),
     confirmPassword: yup
       .string()
-      .required("Confirm password is required")
       .equals([yup.ref('password')], 'Passwords must match')
       .required("confirm password is required"),
     });

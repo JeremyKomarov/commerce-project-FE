@@ -1,11 +1,13 @@
 import React, { useState, useContext } from 'react'
 import "./Home.css"
 import ProductsContext  from "../context/ProductsProvider";
+import FullCustomerDetailsContext  from "../context/FullCustomerDetailsProvider";
 import Product from './Product'
 import FullProduct from './FullProduct';
 
 function Home(props) {
   const { products } = useContext(ProductsContext)
+  const { fullCustomerDetails } = useContext(FullCustomerDetailsContext)
 
 
   const [showFullProduct, setShowFullProduct] = useState(false);
@@ -19,6 +21,7 @@ function Home(props) {
 
   return (
     <div className='home-container'>
+      {fullCustomerDetails?.customer && <div className='home-hello'><h2>Hello {fullCustomerDetails.customer.firstName}</h2></div>}
       <div className='products-container'>
           {products.map(prd => (
             <Product 

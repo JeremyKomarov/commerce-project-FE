@@ -5,17 +5,28 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 
-
-
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
-const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
 function Signup() {
   const validationSchema = yup.object().shape({
-    username: yup.string().required("Username is required").matches(USER_REGEX, "Invalid username"),
-    email: yup.string().required("Email is required").email("Invalid email"),
-    password: yup.string().required("Password is required").matches(PWD_REGEX, "Invalid password"),
-    confirmPassword: yup.string().required("Confirm password is required").equals([yup.ref('password')], 'Passwords must match')
+    username: yup
+      .string()
+      .matches(USER_REGEX, "Invalid username")
+      .required("Username is required"),
+    email: yup
+      .string("email should be a string")
+      .email("invalid email")
+      .required("email address is required"),
+    password: yup
+      .string("password should be a string")
+      .min(5, "must contain min length of 5")
+      .max(12, "must contain max length of 12")
+      .required("password is required"),
+    confirmPassword: yup
+      .string()
+      .required("Confirm password is required")
+      .equals([yup.ref('password')], 'Passwords must match')
+      .required("confirm password is required"),
     });
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm({

@@ -42,3 +42,8 @@
     width: 10rem;
 }
 
+.error-message{
+    height: 20px;
+    color: red;
+}
+
